@@ -366,6 +366,32 @@ ul {
 }
 
 /* News Modifications Francisco López */
+.containerCenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  padding: 0px;
+}
+#section1 {
+  background: white;
+}
+#introduction {
+  background-image: url('/images/nuevaTrama.png');
+  background-size: auto;
+  text-shadow: none;
+  height: 65%;
+  color: white;
+}
+
+
+
+
+
+
+
 #firstheader {
   position: fixed;
   top: 0px;
@@ -397,15 +423,13 @@ ul {
   color: white;
   text-align: center;
 }
-
-#seccion1{background-color: white;}
 #titleIntroduction {
   /*background-color: white;*/
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  /*height: 30%;*/
+  height: 35%;
   padding: 110px 0px 40px 0px;
 }
 #titleIntroduction h1,
@@ -426,16 +450,10 @@ ul {
 #introduction input::-moz-placeholder { color: white; font-weight: 100; text-align: center; }
 #introduction input:-ms-input-placeholder { color: white; font-weight: 100; text-align: center; }
 
-#seccion2{background-color: white;}
-#introduction {
-  background-image: url('/images/nuevaTrama.png');
-  background-size: auto;
-  text-shadow: none;
-  color: white;
-  display: flex;
-  justify-content: center;
-  /*height: 70%;*/
-  padding: 40px 0;
+#section2{background-color: white;}
+
+#chart-wrapper h2 {
+  margin: 16px auto;
 }
 #chart-wrapper h2,
 #chart-wrapper aside {
@@ -459,7 +477,7 @@ ul {
   text-align: center;
 }
 
-#seccion3 {
+#section3 {
   background-color: #F5712E;
   display: flex;
   align-items: center;
@@ -477,7 +495,7 @@ ul {
   margin: 0 0 30px;
 }
 
-#seccion4{background-color: gray;}
+#section4{background-color: white;}
 #containerSlide {
   position: fixed;
   right: 0px;
@@ -486,4 +504,42 @@ ul {
 }
 #containerSlide svg {
   width: 50px;
+}
+
+#extra-year-data h2,
+#extra-year-data aside {
+  color: #5D5D5D;
+  text-align: center;
+}
+
+
+footer {
+  background: #E6E7E8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  font-size: 12px;
+}
+
+footer div p {
+  font-size: 12px;
+}
+
+footer div {
+  width: 550px;
+  display: flex;
+  margin: auto;
+  align-items: center;
+  flex-direction: column;
+}
+
+footer button {
+  background-color: #3C3C3C;
+  border: 0;
+  border-radius: 10px;
+  padding: 10px;
+  font-weight: 400;
+  width: 25%;
+  margin-top: 15px;
 }

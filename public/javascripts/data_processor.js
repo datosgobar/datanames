@@ -1,14 +1,16 @@
 jQuery(function ($) {
 
+  var variableGenero;
   var NAMES_BASE_URL = "/names/" // borrar - sin usar
     , YEARS_BASE_URL = "/years/" // borrar - sin usar
     , MIN_YEAR = 1922
     , MAX_YEAR = 2015
     , statisticsCalculator = {}
-    , DataProcessor = function (names, year) {
+    , DataProcessor = function (names, year, gender = 'male') {
       this.names = names;
       this.processedNames = this._processNames(names);
       this.year = this._processYear(year);
+      this.gender = gender; // dato genero
     };
 
   DataProcessor.prototype.fetchData = function (callback) {
@@ -43,6 +45,17 @@ jQuery(function ($) {
 
       (function (newName) {
         this._fetchNameData(newName).done(function (nameDataResponse) {
+          window.GENDER = nameDataResponse[0].gender; // agrego genero global
+          variableGenero = nameDataResponse[0].gender; // agrego genero global
+
+          if (window.GENDER == undefined || window.GENDER == 'female'){
+            $('#section3')[0].style.backgroundColor = '#F5712E';
+            // document.querySelectorAll('.line0')[0].style.stroke = '#F5712E';
+          } else {
+            $('#section3')[0].style.backgroundColor = '#42BD5C';
+            // document.querySelectorAll('.line0')[0].style.stroke = '#42BD5C';
+          }
+
           namesDone += 1;
           namesData[newName] = nameDataResponse;
           checkDone();
@@ -63,11 +76,8 @@ jQuery(function ($) {
     }
 
     return $processing;
-  };
+  }; // esto se usa ?
 
-  /**
-   *
-   */
   DataProcessor.prototype._fetchNameData = function (processedName) {
     return $.ajax({
       url: NAMES_BASE_URL + processedName + ".json",
@@ -76,9 +86,6 @@ jQuery(function ($) {
     });
   };
 
-  /**
-   *
-   */
   DataProcessor.prototype._fetchYearData = function () {
     return $.ajax({
       url: YEARS_BASE_URL + this.year + ".json",
@@ -87,9 +94,6 @@ jQuery(function ($) {
     });
   };
 
-  /**
-   *
-   */
   DataProcessor.prototype._processNames = function (names) {
     var processedNames = []
       , i, length
@@ -101,9 +105,6 @@ jQuery(function ($) {
     return processedNames;
   };
 
-  /**
-   *
-   */
   DataProcessor.prototype._processName = function (name) {
     var replacements = [
       [/á/, "a"],
@@ -130,9 +131,6 @@ jQuery(function ($) {
     return name;
   };
 
-  /**
-   *
-   */
   DataProcessor.prototype._processYear = function (yearStr) {
     var year = parseInt(yearStr, 10);
 
@@ -144,9 +142,6 @@ jQuery(function ($) {
     }
   };
 
-  /**
-   *
-   */
   DataProcessor.prototype._fetchStatistics = function (nameData, currYear) {
     var statistics = []
       , name = this.names[0];
@@ -158,9 +153,6 @@ jQuery(function ($) {
     return statistics;
   };
 
-  /**
-   *
-   */
   statisticsCalculator.totalNames = function (name, nameData) {
     var totalQuantity = 0
     , length = nameData.length
@@ -173,9 +165,6 @@ jQuery(function ($) {
     return "Entre los años 1922 y 2016 nacieron <b>" + totalQuantity + "</b> personas llamadas <b>" + capitalizeFirstLetter(name) + "</b>.";
   };
 
-  /**
-   *
-   */
   statisticsCalculator.minMaxYear = function (name, nameData) {
     var maxYear = 1922
       , maxYearNumber = 0
@@ -237,5 +226,4 @@ jQuery(function ($) {
   }
 
   window.DataProcessor = DataProcessor;
-
 });
