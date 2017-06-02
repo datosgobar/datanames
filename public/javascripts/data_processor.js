@@ -71,7 +71,7 @@ jQuery(function ($) {
         }).fail(function (nameDataResponse) {
           $('#name').css( 'margin-bottom', '0.5rem' );
           $('#errorName').attr('class', '').css( 'margin-bottom', '0.5rem' ).append('<div class="glyphicon glyphicon-exclamation-sign" style="margin-right:5px;"></div>');
-          $('#errorName').append('¡Ups! No tenemos resultados. Revisá que el nombre esté bien escrito o probá con otro.');
+          $('#errorName').append('No tenemos resultados. Revisá que el nombre esté bien escrito o probá con otro.');
           $.fn.fullpage.destroy('all');
           $('#section1').css({ margin: '0px', height: '100vh'});
           $('#section1 > section').css({ margin: '0px'});
@@ -93,7 +93,7 @@ jQuery(function ($) {
       }).fail(function () {
         $('#year').css( 'margin-bottom', '0.5rem' );
         $('#errorYear').attr('class', '').css( 'margin-bottom', '0.5rem' ).append('<div class="glyphicon glyphicon-exclamation-sign" style="margin-right:5px;"></div>');
-        $('#errorYear').append('¡Ups! No tenemos esa fecha. Por favor, buscá entre 1922 y 2015.');
+        $('#errorYear').append('No tenemos esa fecha. Por favor, buscá entre 1922 y 2015.');
       });
     }
 
@@ -184,9 +184,9 @@ jQuery(function ($) {
     }
 
     if (totalQuantity > 1) {
-      return `Entre 1922 y 2015, se registraron <b>${ new Intl.NumberFormat("de-DE").format(totalQuantity) }</b> personas llamadas <b>${ capitalizeFirstLetter(name) }</b>.`;
+      return `Entre 1922 y 2015, se registraron <b>${ new Intl.NumberFormat("de-DE").format(totalQuantity) }</b> personas llamadas <b>${ capitalizeFirstLetter(name.toLowerCase()) }</b>.`;
     } else {
-      return `Entre 1922 y 2015, sólo vos te llamaste <b>${ capitalizeFirstLetter(name) }</b>.`;
+      return `Entre 1922 y 2015, sólo vos te llamaste <b>${ capitalizeFirstLetter(name.toLowerCase()) }</b>.`;
     }
   };
   statisticsCalculator.minMaxYear = function (name, nameData) {
