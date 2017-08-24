@@ -12,7 +12,7 @@ jQuery(function ($) {
         this.otherNamesData = other_names_data;
         this.mainNameData = main_name_data;
         this.year = this._processYear(year);
-        this.gender = gender; 
+        this.gender = gender;
     };
 
   DataProcessor.prototype.fetchData = function (callback) {
@@ -32,7 +32,7 @@ jQuery(function ($) {
     for (var i=0; i < otherNames.length; i++) {
       processedNames.push(otherNames[i]);
       namesData[otherNames[i]] = JSON.parse(otherNamesData[i]);
-    } 
+    }
 
     checkDone = function () {
       if (yearDone) {
@@ -51,6 +51,24 @@ jQuery(function ($) {
 
     if (mainNameData.length == 0) {
       $processing.reject({ type: "invalid_name", name: mainName });
+      return $processing;
+    }
+
+    otherNamesData.forEach(function(v, k) {
+      if (v.length === 2) {
+        $processing.reject({ type: "invalid_name", name: otherNames[k] });
+        return $processing;
+      }
+    });
+
+    if (year === '') { // Validaciones años
+      $processing.reject({ type: "empty_year", year: year });
+      return $processing;
+    } else if (year > MAX_YEAR || year < MIN_YEAR) {
+      $processing.reject({ type: "range_year", year: year });
+      return $processing;
+    } else if (isNaN(Number(year.toString().trim())) === true || parseInt(year.toString().trim()).toString().length !== 4) {
+      $processing.reject({ type: "invalid_year", year: year });
       return $processing;
     }
 
