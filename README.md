@@ -5,12 +5,15 @@ Proyecto de visualización de estadísticas sobre nombres de nacimientos argenti
 <!-- NO MODIFICAR NI INDICE NI TITULOS -->
 ## Índice
 
-* [Instalación](#instalación)
-	* [Dependencias](#dependencias)
-	* [Generación de data](#generación-de-data)
-    * [Iniciar el servidor](#iniciar-el-servidor-en-development)
-* [Créditos](#créditos)
-* [Contacto](#contacto)
+- [Nombres Argentinos](#nombres-argentinos)
+  - [Índice](#índice)
+  - [Instalación](#instalación)
+    - [Dependencias](#dependencias)
+      - [Generación de data](#generación-de-data)
+        - [Nota sobre los datos](#nota-sobre-los-datos)
+      - [Iniciar el servidor en development](#iniciar-el-servidor-en-development)
+  - [Créditos](#créditos)
+  - [Contacto](#contacto)
 
 ## Instalación
 
@@ -59,4 +62,4 @@ Este proyecto estuvo inspirado en el proyecto de [DATA Uruguay](http://data.180.
 
 Te invitamos a [crearnos un issue](https://github.com/datosgobar/nombres-argentinos/issues/new) en caso de que encuentres algún bug o tengas feedback de alguna parte de `nombres-argentinos`.
 
-Para todo lo demás, podés mandarnos tu comentario o consulta a [datos@modernizacion.gob.ar](mailto:datos@modernizacion.gob.ar).
+Para todo lo demás, podés mandarnos tu comentario o consulta a [datosargentina@jefatura.gob.ar](mailto:datosargentina@jefatura.gob.ar).
